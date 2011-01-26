@@ -1,0 +1,113 @@
+﻿<?php
+
+	include('strona.inc');
+	class Liga extends Baza
+	{
+		public function ligi($sql_result)
+		{
+			//$tabelka='<table rules="all" cellpadding="2" >';
+			$zawartosc = "";
+			for($i=0;$i<mysql_num_rows($sql_result); $i++)
+			{
+				$zawartosc .= '<div class="wyswietl">';
+				for($j=0; $j<mysql_num_fields($sql_result);$j++)
+				{
+					if($j==0)
+					{ 
+						$zawartosc .= '<h3><span id="nazwa">Liga:</span> '.mysql_result($sql_result, $i, $j).'</h3><br />';
+					}
+					else if($j==1)
+					{
+						$zawartosc .= '<span id="nazwa">Kraj:</span>  '.mysql_result($sql_result, $i, $j).'<br />';
+					}
+					else
+					{
+						$zawartosc .= '<span id="nazwa">Ilość drużyn:</span>  '.mysql_result($sql_result, $i, $j).'<br />';
+					}
+					
+				}
+				$zawartosc .='<form method="get" action="ligi.php" id="" name="UsunLige">';
+				$zawartosc .='<input type="hidden" name="usun" value="'.mysql_result($sql_result, $i, 0).'" />';
+				$zawartosc .='<input type="submit"  id="button" value="Usuń" />';
+				$zawartosc .='</form>';
+				$zawartosc .= '<hr></div>';
+			}
+			$zawartosc .= $this->dodajLige();
+			return $zawartosc;
+		}
+		public function dodajLige()
+		{
+			$zawartosc = '<form method="get" action="ligi.php" id="test" name="test">';
+				
+				$zawartosc .= '<table id="dodajLige">';
+					$zawartosc .= "<tr id=\"dodaj\"><td><h3>Dodaj ligę: </h3></td></tr>"; 
+					$zawartosc .='<tr>';
+						$zawartosc .='<td>Liga: </td>';
+						$zawartosc .='<td><input type="text" name="Liga" value="" size="30" /></td>';
+					$zawartosc .='</tr>';
+					$zawartosc .='<tr>';
+						$zawartosc .='<td>Kraj: </td>';
+						$zawartosc .='<td><input type="text" name="Kraj" value="" size="30" /></td>';
+					$zawartosc .='</tr>';
+					$zawartosc .='<tr>';
+						$zawartosc .='<td>Ilość drużyn </td>';
+						$zawartosc .='<td><input type="text" name="IloscDruzyn" value="" size="3" /></td>';
+					$zawartosc .='</tr>';
+					$zawartosc .='<tr>';
+						$zawartosc .='<td><input type="submit" name="dodaj" value="Zatwierdz" /></td>';
+					$zawartosc .='</tr>';
+				$zawartosc .='</table>';
+			$zawartosc .='</form>';
+			return $zawartosc;
+		}
+	
+	}
+	$liga = new Liga();
+	$liga->polaczZBaza();
+	$liga->naglowek = "ligi";
+	if(isset($_GET['Liga']) &&  isset($_GET['Kraj']) &&  isset($_GET['IloscDruzyn']) )
+	{
+		if($_GET['Liga']=="" || $_GET['Kraj']=="" || $_GET['IloscDruzyn']=="")
+		{
+			$liga->zawartosc = "<h3 align='center'>Niepoprawne dane!</h3>";
+		}
+		else
+		{
+			$nazwa = $_GET['Liga'];
+			$kraj = $_GET['Kraj'];
+			$IloDr = $_GET['IloscDruzyn'];
+			$liga->zapytanie = "insert into liga values ('".$nazwa."','".$kraj."', '".$IloDr."')";
+			$wynikZapytania = $liga->select($liga->zapytanie);
+			$liga->zapytanie = "select * from liga";
+			$wynikZapytania = $liga->select($liga->zapytanie);
+
+			$liga->zawartosc = $liga->ligi($wynikZapytania);
+		}
+	}
+	else if(isset($_GET['usun']))
+	{
+		$usun = $_GET['usun'];
+		$liga->zapytanie = "delete from liga where Nazwa = '".$usun."';";
+		$wynikZapytania = $liga->select($liga->zapytanie);
+		if(!$wynikZapytania)
+		{
+			if(mysql_errno()==1451)
+				$liga->zawartosc = 'Nie można usunąć elementu który ma jakieś zależności pomiędzy innymi tabelami';
+		}
+		else
+		{
+			$liga->zapytanie = "select * from liga";
+			$wynikZapytania = $liga->select($liga->zapytanie);
+			$liga->zawartosc = $liga->ligi($wynikZapytania);
+		}
+	}
+	else
+	{
+		$liga->zapytanie = "select * from liga";
+		$wynikZapytania = $liga->select($liga->zapytanie);
+		$liga->zawartosc = $liga->ligi($wynikZapytania);
+	}
+	$liga->wyswietlStrone();
+	$liga->zamknijBaze($liga->db);
+	unset($liga);
+?>

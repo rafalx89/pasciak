@@ -1,0 +1,8 @@
+﻿<?php
+	include('strona.inc');
+	$strona = new Strona();
+	$strona->naglowek = "Piłka ręczna";
+	$strona->zawartosc =  "To jest główna.";
+	$strona->wyswietlStrone();
+        unset($strona);
+?>

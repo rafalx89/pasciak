@@ -1,0 +1,320 @@
+﻿/*p.prawy {text-align: right}
+p.center {text-align: center}
+*/
+/*p
+{
+  text-align: left;
+  /* To też jest komentarz CSS */
+/*  color: #1C1C1C;
+  font-family: arial
+}*/
+
+h1#blinkk
+{
+text-decoration: blink;
+color: red;
+}
+h1#naglowek
+{
+  text-align: center;
+  padding: 100px;
+  margin: 0 auto;
+}
+
+table#glowna
+{
+width: 60%;
+margin: 0 auto;
+
+}
+
+body
+{
+    color: black;
+    background-color: gray;
+    /*background-image: url(28.gif);*/
+    /*background-repeat: no-repeat;*/ /* bez powtarzania */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+}
+
+div.naglowek
+{
+  background-color: #969696;
+  background-image: url(banery/banery/baner_glowny.jpg);
+  border: 1px solid #545454;
+  width: 800px;
+  height: 190px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  padding: 0 auto;
+}
+div.naglowek#kluby
+{
+  background-image: url(banery/banery/Kluby.jpg);
+}
+div.naglowek#ligi
+{
+  background-image: url(banery/banery/Ligi.jpg);
+}
+
+div.naglowek#mecze
+{
+  background-image: url(banery/banery/Mecze.jpg);
+}
+
+div.naglowek#szukaj
+{
+  background-image: url(banery/banery/Szukaj.jpg);
+}
+
+div.naglowek#tabela
+{
+  background-image: url(banery/banery/Tabele.jpg);
+}
+
+div.naglowek#zawodnicy
+{
+  background-image: url(banery/banery/Zawodnicy.jpg);
+}
+
+div.naglowek#zespoly
+{
+  background-image: url(banery/banery/Zespoly.jpg);
+}
+div.naglowek#kontrakty
+{
+  background-image: url(banery/banery/Kontrakty.jpg);
+}
+div.naglowek#strzelcy
+{
+  background-image: url(banery/banery/Strzelcy.jpg);
+}
+
+div.head
+{
+  /*border: 1px solid black;*/
+  width: 800px;
+  display: table;
+  margin: 0 auto;
+  /*padding: 5px;*/
+  margin-bottom: 5px;
+  border-spacing: 2px;
+  border-collapse: separate;
+}
+div.zakladki
+{
+  border: 1px solid #545454;
+  background-color: #969696;
+  display: table-cell;
+  width: 170px;
+  height: 60px;
+  /*height: 100%;*/
+  margin-left: 5px;
+ /* padding:5px;*/
+  /*float: left;*/
+  border-spacing: 5px;
+  border-collapse: separate;
+  
+}
+
+div.zawartosc
+{
+  border: 1px solid #545454;
+  /*background-image: url(transparency2.png);*/
+  background-color: #969696;
+  width: 555px;
+  display: table-cell;
+  margin-right: 5px;
+  padding: 5px;
+  /*float: right;*/
+  border-spacing: 5px;
+  border-collapse: separate;
+  vertical-align: top;
+}
+
+div.koniec
+{
+  border: 1px solid #545454;
+  background-color: #969696;
+  width: 800px;
+  height: 40px;
+  margin: 5px;
+  margin: 0 auto;
+  
+}
+div.przycisk
+{
+  border: 1px solid #545454;
+  background-color: #bdbdbd;
+  background-image: url(banery/przyciski/str_glowna.jpg);
+  margin: 8px;
+  width: 165px;
+  height: 50px;
+  text-align: center;
+}
+div.przycisk#kluby
+{
+  background-image: url(banery/przyciski/kluby.jpg);
+}
+div.przycisk#ligi
+{
+  background-image: url(banery/przyciski/ligi.jpg);
+}
+
+div.przycisk#mecze
+{
+  background-image: url(banery/przyciski/mecze.jpg);
+}
+div.przycisk#szukaj
+{
+  background-image: url(banery/przyciski/Szukaj.jpg);
+}
+
+div.przycisk#tabele_ligowe
+{
+  background-image: url(banery/przyciski/tabele_ligowe.jpg);
+}
+
+div.przycisk#zawodnicy
+{
+  background-image: url(banery/przyciski/zawodnicy.jpg);
+}
+
+div.przycisk#zespoly
+{
+  background-image: url(banery/przyciski/zespoly.jpg);
+}
+div.przycisk#kontrakty
+{
+  background-image: url(banery/przyciski/kontrakty.jpg);
+}
+div.przycisk#strzelcy
+{
+  background-image: url(banery/przyciski/strzelcy.jpg);
+}
+div.przycisk:hover
+{
+  border: 1px solid red;
+  background-color: #bdbdbd;
+  margin: 8px;
+  width: 165px;
+  height: 50px;
+  text-align: center;
+}
+a
+{
+  text-decoration: none;
+}
+div.wyswietl
+{
+	position: relative;
+	/*border: 1px solid #545454;*/
+	/*background-color: #bbbbbb;*/
+	padding: 5px;
+	margin-bottom: 3px;
+}
+
+/*a#zespoly
+{
+  color: green;
+}*/
+input#button
+{
+  color: green;
+  border: 1px solid #545454;
+  background-color: #b8b8b8;
+  margin: 0 auto;
+  margin-bottom:5px;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+}
+input#button:hover
+{
+  color:red; 
+  border: 1px solid #545454;
+  background-color: #b8b8b8;
+  margin: 0 auto;
+  margin-bottom:5px;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+}
+input.buttonk
+{
+  border: 1px solid #545454;
+  background-color: #b8b8b8; 
+  color: green;
+  font-weight: bold;
+}
+input.buttonk:hover
+{
+  border: 1px solid #545454;
+  background-color: #b8b8b8; 
+  color: red;
+  font-weight: bold;
+}
+
+
+span#nazwa 
+{
+  color: #006400;
+  font-weight: bold;
+}
+
+table#tabela_ligowa
+{
+  /*border: 1px solid #545454;*/
+  margin: 0 auto;
+}
+table#kolejka
+{
+   margin: 0 auto;
+}
+table#dodajLige
+{
+  border: 1px solid #545454;
+  margin: 0 auto;
+}
+td#kolejka
+{
+  border: 1px solid #545454;
+  background-color: #ADD8D7;
+  text-align:center;
+}
+td#kolejka1
+{
+  
+  border: 1px solid #545454;
+  background-color: #87CEC8;
+  text-align: center;
+}
+
+td#kolejka2
+{
+
+  border: 1px solid #545454;
+  background-color: #87CEFF;
+  margin: 0;
+  text-align: center;
+}
+
+td#nazwy_pol
+{
+  border: 1px solid #545454;
+  background-color: #696969;
+  margin: 0;
+  
+}
+td#wyniki
+{
+  border: 1px solid #D3D3D3;
+  background-color: #D3D3D3;
+  margin: 0;
+}
+tr#dodaj
+{
+  margin: 0 auto;
+}

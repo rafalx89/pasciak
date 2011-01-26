@@ -1,0 +1,64 @@
+﻿<?php
+
+	include('strona.inc');
+	
+	class Strzelcy extends Baza 
+	{
+		
+		public function setLiga($sql_result)
+		{
+			$zawartosc = "<h3>Wybierz Lige z której zostaną wyświetleni strzelcy:</h3><br />";
+			$zawartosc .= '<form method="get" action="strzelcy.php">';
+
+			for($i=0;$i < mysql_num_rows($sql_result); $i++)
+			{
+				$zawartosc .= '<input type="submit" name="liga" id="button" value="'.mysql_result($sql_result,$i).'" /><br />';
+			}
+			$zawartosc .='</form>'; 
+			return $zawartosc;
+		}
+
+
+		public function setKraj($sql_result)
+		{
+			$zawartosc = "<h3>Wybierz Kraj z którego zostaną wyświetleni strzelcy:</h3><br />";
+			$zawartosc .= '<form method="get" action="strzelcy.php">';
+			for($i=0;$i < mysql_num_rows($sql_result); $i++)
+			{
+				$zawartosc .= '<input type="submit" name="kraj"  id="button" value="'.mysql_result($sql_result,$i).'" /><br />';
+			}
+			$zawartosc .='</form>'; 
+			return $zawartosc;
+		}
+	}
+
+	
+		
+	$strzelcy = new Strzelcy();
+	$strzelcy->naglowek = 'strzelcy';
+	$strzelcy->polaczZBaza();
+	if(isset($_GET['kraj']))
+	{
+		$kraj = $_GET['kraj'];
+		$strzelcy->zapytanie = 'select Nazwa from liga where Kraj = \''.$kraj.'\';';
+		$wynikZapytania = $strzelcy->select($strzelcy->zapytanie);
+		$strzelcy->zawartosc = $strzelcy->setLiga($wynikZapytania);
+	}
+	else if(isset($_GET['kraj']))
+	{
+		
+	}
+	else
+	{
+		$strzelcy->zapytanie = "SELECT Kraj FROM liga group by Kraj;";
+		$wynikZapytania = $strzelcy->select($strzelcy->zapytanie);
+		$strzelcy->zawartosc = $strzelcy->setKraj($wynikZapytania);
+	}
+	
+
+
+	$strzelcy->wyswietlStrone();
+	$strzelcy->zamknijBaze($strzelcy->db);
+	unset($strzelcy);
+
+?>
